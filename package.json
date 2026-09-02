@@ -1,6 +1,6 @@
 {
   "name": "@adamancyzhang/agent-vuetools",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Inspect Vue 3 component tree, props and setup state in a live browser over CDP — no vue-devtools extension needed.",
   "type": "module",
   "bin": {
@@ -33,6 +33,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
+    "prepublishOnly": "npm run build",
     "build": "npm run typecheck && node scripts/build.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run test/unit",
