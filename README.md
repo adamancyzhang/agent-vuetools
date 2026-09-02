@@ -203,6 +203,22 @@ Exit codes: `0` success / `1` runtime error / `2` usage error. With `--json`, th
 
 Multiple tabs: pick with `--tab` (`t1`/`t2`… 1-based, exact title, or URL substring). Prefer URL substrings — `Target.getTargets` order is not guaranteed. With multiple tabs and no `--tab`, the CLI errors and lists the options.
 
+## Browser operations
+
+agent-vuetools inspects but never drives the page. For browser control — opening URLs, clicking, filling forms, screenshots — pair it with [agent-browser](https://github.com/vercel-labs/agent-browser), which manages a Chrome instance over the same CDP protocol:
+
+```bash
+npm i -g agent-browser
+agent-browser install                  # first time only
+agent-browser open http://localhost:5173
+
+agent-vuetools tree --cdp "$(agent-browser get cdp-url)"   # inspect its browser
+agent-browser click "#submit"                               # drive the UI
+agent-vuetools inspect SubmitButton --cdp "$(agent-browser get cdp-url)" --fields props,setupState,computed
+```
+
+`agent-browser get cdp-url` bridges the two tools: it prints the ws URL of agent-browser's Chrome, which agent-vuetools accepts directly via `--cdp`.
+
 ## Limits & Caveats
 
 - **Vue 3 only** (Vue 2 → `vue2` error; the probe is pluggable — contributions welcome).
