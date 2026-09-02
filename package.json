@@ -1,6 +1,6 @@
 {
   "name": "@adamancyzhang/agent-vuetools",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Inspect Vue 3 component tree, props and setup state in a live browser over CDP — no vue-devtools extension needed.",
   "type": "module",
   "bin": {
