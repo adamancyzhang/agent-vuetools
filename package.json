@@ -10,7 +10,8 @@
     "node": ">=18"
   },
   "files": [
-    "dist"
+    "dist",
+    "skills"
   ],
   "repository": {
     "type": "git",
@@ -28,7 +29,8 @@
     "browser"
   ],
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "build": "npm run typecheck && node scripts/build.mjs",
