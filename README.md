@@ -213,16 +213,19 @@ Multiple tabs: pick with `--tab` (`t1`/`t2`… 1-based, exact title, or URL subs
 
 ## Skill for AI Coding Assistants
 
-Install the skill for richer agent context:
+Install the agent-vuetools skill with the [skills](https://skills.sh) CLI, directly from GitHub:
 
 ```bash
 npx skills add adamancyzhang/agent-vuetools
 ```
 
-Works with Claude Code, Codex, Cursor, Gemini CLI, and other skills-aware assistants. Manual install for Claude Code:
+The skill is fetched from this repository (`skills/agent-vuetools/SKILL.md`), so it stays up to date automatically. Works with Claude Code, Codex, Cursor, Gemini CLI, and other skills-aware assistants. Do not copy `SKILL.md` from `node_modules` — it will become stale.
+
+Manual install for Claude Code:
 
 ```bash
-mkdir -p .claude/skills && cp -r skills/agent-vuetools .claude/skills/
+mkdir -p .claude/skills
+cp -r skills/agent-vuetools .claude/skills/
 ```
 
 ## Development
