@@ -1,7 +1,7 @@
 {
   "name": "@adamancyzhang/agent-vuetools",
-  "version": "0.1.2",
-  "description": "Inspect Vue 3 component tree, props and setup state in a live browser over CDP — no vue-devtools extension needed.",
+  "version": "0.1.3",
+  "description": "Inspect Vue 3 component tree, props and setup state in a live browser over CDP.",
   "type": "module",
   "bin": {
     "agent-vuetools": "dist/cli.js"
@@ -37,6 +37,7 @@
     "build": "npm run typecheck && node scripts/build.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run test/unit",
+    "check-skill": "node scripts/check-skill.mjs",
     "test:e2e": "npm run build && vitest run test/e2e",
     "fixture:serve": "vite dev test/fixtures/vue-app --port 4173 --strictPort"
   },

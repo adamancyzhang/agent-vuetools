@@ -1,12 +1,12 @@
 ---
 name: agent-vuetools
-description: Vue 3 component introspection CLI for AI agents. Use when the user needs to inspect or debug Vue components in a running browser — viewing the component tree, checking props, <script setup> setup state, computed values, locating components by name/__file path/CSS selector/XPath/visible text, or debugging element styles. Triggers include requests to "show the component tree", "what props does this component receive", "find the button that says ...", "inspect this Vue component", "where is this component defined", or "debug this element's styles". Works over CDP against any Chrome/Edge with a remote-debugging port; no vue-devtools extension required. Pair with the agent-browser skill for browser operations (opening URLs, clicking, filling) during Vue debugging.
+description: 'Vue 3 component introspection CLI for AI agents. Use when the user needs to inspect or debug Vue components in a running browser — viewing the component tree, checking props, <script setup> setup state, computed values, locating components by name/__file path/CSS selector/XPath/visible text, or debugging element styles. Also use while debugging e2e or component tests of Vue apps (Vitest, Vue Test Utils, Playwright, Cypress) when a test fails because the app rendered the wrong tree, props, or state — inspect what components actually received and what setup and computed values currently hold, and compare them against the test expectations. Triggers include "show the component tree", "what props does this component receive", "find the button that says ...", "why did this Vue test fail", "the test expected 3 items but only 2 rendered", "verify the counter state after clicking". Pair with the agent-browser skill for browser operations during Vue debugging.'
 allowed-tools: Bash(agent-vuetools:*)
 ---
 
 # agent-vuetools
 
-Inspect Vue 3 components (virtual DOM tree, props, `<script setup>` state, computed) in a live browser over CDP — **no vue-devtools extension needed**.
+Inspect Vue 3 components (virtual DOM tree, props, `<script setup>` state, computed) in a live browser over CDP.
 
 Requires Chrome/Edge running with a debugging port (default: `127.0.0.1:9222`):
 
@@ -142,7 +142,7 @@ Errors: `{"ok":false,"error":{"code":"no-vue|vue2|not-found|bad-query|no-browser
 
 ## Limits
 
-- **Vue 3 only** (Vue 2 → `vue2` error). Dev builds give the richest output: `__file` paths, script-setup computed names. In production builds these degrade (`Anonymous`, no computed names) — same limits as vue-devtools.
+- **Vue 3 only** (Vue 2 → `vue2` error). Dev builds give the richest output: `__file` paths, script-setup computed names. In production builds these degrade (`Anonymous`, no computed names).
 - **iframes**: main frame only. **KeepAlive** cached components are not expanded; **Suspense** only walks the resolved branch.
 - Huge pages: tree caps at 5000 nodes (`truncated: true`); prefer `inspect`/`query` XPath or text targeting for deep content.
 - Page still loading → `no-vue`; retry in a moment.

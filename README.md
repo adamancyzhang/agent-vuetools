@@ -1,6 +1,6 @@
 # agent-vuetools
 
-Inspect Vue 3 components in a live browser over CDP — no vue-devtools extension needed. Built for AI agents: stable machine-readable output, plus a human-readable text format.
+Inspect Vue 3 components in a live browser over CDP. Built for AI agents: stable machine-readable output, plus a human-readable text format.
 
 [![npm version](https://img.shields.io/npm/v/%40adamancyzhang%2Fagent-vuetools)](https://www.npmjs.com/package/@adamancyzhang/agent-vuetools)
 [![license](https://img.shields.io/npm/l/%40adamancyzhang%2Fagent-vuetools)](LICENSE)
@@ -222,7 +222,7 @@ agent-vuetools inspect SubmitButton --cdp "$(agent-browser get cdp-url)" --field
 ## Limits & Caveats
 
 - **Vue 3 only** (Vue 2 → `vue2` error; the probe is pluggable — contributions welcome).
-- **Production builds** lose `__file`, component names, and script-setup computed names (fall back to `Anonymous`) — the same limits vue-devtools has. Dev builds give the richest output.
+- **Production builds** lose `__file`, component names, and script-setup computed names (fall back to `Anonymous`). Dev builds give the richest output.
 - **iframes**: main frame only. **KeepAlive** cached components are not expanded (cycle guard); **Suspense** only walks the resolved branch.
 - **Huge pages**: tree caps at 5000 nodes (`truncated: true`). For deep content, use `inspect`/`query` with XPath or text targeting instead of the tree.
 - Reading computed values triggers their getters (side-effect-free by convention — standard for component inspection tools).
